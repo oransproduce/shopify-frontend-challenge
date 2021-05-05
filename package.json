@@ -1,0 +1,39 @@
+{
+  "name": "shopify-frontend-challenge",
+  "version": "1.0.0",
+  "description": "Remy Orans submission for the Fall 2021 Shopfify frontend internship challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oransproduce/shopify-frontend-challenge.git"
+  },
+  "author": "Remy Orans",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oransproduce/shopify-frontend-challenge/issues"
+  },
+  "homepage": "https://github.com/oransproduce/shopify-frontend-challenge#readme",
+  "dependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.1",
+    "@babel/preset-react": "^7.13.13",
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.58",
+    "axios": "^0.21.1",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-import": "^1.13.3",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
