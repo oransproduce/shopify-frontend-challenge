@@ -20,11 +20,11 @@ module.exports = {
     });
   },
   remove: (_id, cb) => {
-    Movies.deleteOne({ _id }, (err, result) => {
+    Movies.deleteOne({ _id }, (err) => {
       if (err) {
         cb(null);
       } else {
-        cb(null, result);
+        cb(null);
       }
     });
   },

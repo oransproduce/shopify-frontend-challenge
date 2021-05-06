@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
 
 router.delete('/', (req, res) => {
   const { _id } = req.body;
-  remove(_id, (err, result) => {
+  remove(_id, (err) => {
     if (err) {
       res.sendStatus(500);
     } else {

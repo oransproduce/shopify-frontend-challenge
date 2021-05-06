@@ -25,12 +25,12 @@ describe('POST /movies', () => {
         {
           title: 'Lord of the Rings',
           year: '2001',
-        }
+        },
       )
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(201)
-      .end((err, res) => {
+      .end((err) => {
         if (err) return done(err);
         return done();
       });
