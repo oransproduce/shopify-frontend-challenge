@@ -1,5 +1,7 @@
-const app = require('./app.js');
 const { mongoose } = require('../database');
+
+const app = require('./app.js');
+const { port } = require('../config');
 
 mongoose.connect('mongodb://localhost/movies', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -11,8 +13,7 @@ db.once('open', () => {
   console.log('mongodb connection successful');
 });
 
-const PORT = 3000;
-app.listen(PORT, () => {
+app.listen(port, () => {
   // eslint-disable-next-line no-console
-  console.log('Server is listening on http://localhost:3000');
+  console.log(`Server is listening on http://localhost:${port}`);
 });
