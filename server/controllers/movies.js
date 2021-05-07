@@ -8,14 +8,13 @@ router.get('/', (req, res) => {
     if (err) {
       res.sendStatus(500);
     } else {
-      res.status(200).json(movies);
+      res.status(200).send(movies);
     }
   });
 });
 
 router.post('/', (req, res) => {
-  const { title, year } = req.body;
-  add(title, year, (err, result) => {
+  add(req.body, (err, result) => {
     if (err) {
       res.sendStatus(500);
     } else {
@@ -24,13 +23,13 @@ router.post('/', (req, res) => {
   });
 });
 
-router.delete('/', (req, res) => {
-  const { _id } = req.body;
-  remove(_id, (err) => {
+router.delete('/:imdbID', (req, res) => {
+  const { imdbID } = req.params;
+  remove(imdbID, (err) => {
     if (err) {
       res.sendStatus(500);
     } else {
-      res.sendStatus(200);
+      res.sendStatus(204);
     }
   });
 });

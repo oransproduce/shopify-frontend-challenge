@@ -1,8 +1,8 @@
 const { Movies } = require('../../database');
 
 module.exports = {
-  add: (title, year, cb) => {
-    Movies.create({ title, year }, (err, result) => {
+  add: (movieInfo, cb) => {
+    Movies.create(movieInfo, (err, result) => {
       if (err) {
         cb(err);
       } else {
@@ -19,8 +19,8 @@ module.exports = {
       }
     });
   },
-  remove: (_id, cb) => {
-    Movies.deleteOne({ _id }, (err) => {
+  remove: (imdbID, cb) => {
+    Movies.deleteOne({ imdbID }, (err) => {
       if (err) {
         cb(null);
       } else {

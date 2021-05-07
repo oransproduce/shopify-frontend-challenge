@@ -1,10 +1,12 @@
 import React from 'react';
-import { Grid, Paper, Typography } from '@material-ui/core';
+import { uniqBy } from 'lodash';
+import MovieList from './MovieList';
 
-const SearchResults = () => (
-  <Paper>
-    <Typography variant="h3">Search Results</Typography>
-  </Paper>
-);
+const SearchResults = ({ resultList, nominateMovie, idDictionary, doneNominating }) => {
+  const filteredResults = uniqBy(resultList, 'imdbID');
+  return (
+    <MovieList doneNominating={doneNominating} idDictionary={idDictionary} title="Search Results" movieList={filteredResults} movieAction={nominateMovie} buttonText="Nominate" />
+  );
+};
 
 export default SearchResults;

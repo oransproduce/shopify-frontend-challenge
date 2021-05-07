@@ -18,16 +18,15 @@ afterEach((done) => {
 });
 
 describe('POST /movies', () => {
+  const movie = {
+    title: 'Lord of the Rings',
+    year: '2001',
+    imdbID: 'abcdefg',
+  };
   it('responds with correct status code and json', (done) => {
     request(app)
       .post('/movies')
-      .send(
-        {
-          title: 'Lord of the Rings',
-          year: '2001',
-        },
-      )
-      .set('Accept', 'application/json')
+      .send(movie)
       .expect('Content-Type', /json/)
       .expect(201)
       .end((err) => {
@@ -40,9 +39,12 @@ describe('GET /movies', () => {
   it('responds with a movie that has been posted with status code 200', async (done) => {
     const movie = {
       title: 'Lord of the Rings',
-      year: 2001,
+      year: '2001',
+      imdbID: 'abcdefg',
     };
-    await Movies.create(movie);
+    await request(app)
+      .post('/movies')
+      .send(movie);
     request(app)
       .get('/movies')
       .set('Accept', 'application/json')
@@ -54,21 +56,23 @@ describe('GET /movies', () => {
         expect(year).toBe(movie.year);
         done();
       })
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.log(err);
-      });
+      .catch((err) => done(err));
   });
 });
 describe('DELETE /movies', () => {
   it('deletes posted movie and subsequent get returns nothing', async (done) => {
     const movie = {
       title: 'Lord of the Rings',
-      year: 2001,
+      year: '2001',
+      imdbID: 'abcdefg',
     };
-    const { _id } = await Movies.create(movie);
-    await Movies.deleteMany({ _id });
-    request(app)
+    await request(app)
+      .post('/movies')
+      .send(movie);
+    await request(app)
+      .delete(`/movies/${movie.imdbID}`)
+      .expect(204);
+    await request(app)
       .get('/movies')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
@@ -77,9 +81,6 @@ describe('DELETE /movies', () => {
         expect(response.body).toHaveLength(0);
         done();
       })
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.log(err);
-      });
+      .catch((err) => done(err));
   });
 });

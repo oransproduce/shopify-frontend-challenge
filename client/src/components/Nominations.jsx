@@ -1,10 +1,8 @@
 import React from 'react';
-import { Paper, Typography } from '@material-ui/core';
+import MovieList from './MovieList';
 
-const Nominations = () => (
-  <Paper>
-    <Typography variant="h3">Nominations</Typography>
-  </Paper>
+const Nominations = ({ nominations, removeMovie }) => (
+  <MovieList title="Nominations" movieList={nominations} movieAction={removeMovie} buttonText="Remove" />
 );
 
 export default Nominations;
