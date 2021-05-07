@@ -12,6 +12,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/movies', moviesRouter);
-app.get('/search', searchController);
+app.get('/search/:query', searchController);
 
 module.exports = app;
