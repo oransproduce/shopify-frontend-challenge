@@ -13,7 +13,7 @@ const Movie = (props) => {
   return (
     <ListItem>
       <ListItemText primary={title} secondary={year} />
-      <Button disabled={disabled} variant="contained" onClick={handleClick}>{buttonText}</Button>
+      <Button data-testid="movie-button" disabled={disabled} variant="contained" onClick={handleClick}>{buttonText}</Button>
     </ListItem>
   );
 };
