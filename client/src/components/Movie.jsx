@@ -1,7 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { ListItem, ListItemText, Button } from '@material-ui/core';
 
-const Movie = ({ title, year, movieAction, imdbID, buttonText, disabled }) => {
+const Movie = (props) => {
+  const {
+    title, year, movieAction, imdbID, buttonText, disabled,
+  } = props;
   const handleClick = () => {
     movieAction(title, year, imdbID);
   };
@@ -14,3 +19,12 @@ const Movie = ({ title, year, movieAction, imdbID, buttonText, disabled }) => {
 };
 
 export default Movie;
+
+Movie.propTypes = {
+  title: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
+  movieAction: PropTypes.func.isRequired,
+  imdbID: PropTypes.string.isRequired,
+  buttonText: PropTypes.string.isRequired,
+  disabled: PropTypes.bool.isRequired,
+};

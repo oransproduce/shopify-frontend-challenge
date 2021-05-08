@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Grid, Typography, Container } from '@material-ui/core';
@@ -6,6 +7,7 @@ import searchMovies from '../../../lib/search';
 import Search from './Search';
 import SearchResults from './SearchResults';
 import Nominations from './Nominations';
+import NominationAlert from './NominationAlert';
 
 const App = () => {
   const [searchTerm, updateSearchTerm] = useState('');
@@ -13,17 +15,15 @@ const App = () => {
   const [nominations, updateNominations] = useState([]);
   const [idDictionary, updateDictionary] = useState({});
   const [doneNominating, updateDone] = useState(false);
+  const [open, setOpen] = useState(false);
+
   const getNominated = () => {
     axios.get('/movies').then(({ data }) => {
-      console.log(data);
       data.forEach((movie) => {
         idDictionary[movie.imdbID] = true;
       });
-      if (data.length >= 5) {
-        updateDone(true);
-      } else {
-        updateDone(false);
-      }
+      updateDone(data.length >= 5);
+      setOpen(data.length >= 5);
       updateDictionary(idDictionary);
       updateNominations(data);
     }).catch((err) => {
@@ -38,6 +38,8 @@ const App = () => {
   };
 
   const removeMovie = (title, year, imdbID) => {
+    delete idDictionary[imdbID];
+    updateDictionary(idDictionary);
     axios.delete(`/movies/${imdbID}`).then(() => {
       getNominated();
     }).catch((err) => console.log(err));
@@ -74,6 +76,7 @@ const App = () => {
           </Grid>
         </Grid>
       </Grid>
+      <NominationAlert open={open} setOpen={setOpen} />
     </Container>
   );
 };
