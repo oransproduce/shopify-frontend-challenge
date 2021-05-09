@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Grid, Typography, Container } from '@material-ui/core';
+import {
+  Grid, Typography, Container, Box,
+} from '@material-ui/core';
 
 import searchMovies from '../../../lib/search';
 import Search from './Search';
@@ -54,15 +56,13 @@ const App = () => {
   }, []);
 
   return (
-    <Container maxWidth="lg">
-      <Grid justify="center" container direction="row" spacing={3}>
-        <Grid item xs={12}>
-          <Typography align="center" variant="h1">The Shoppies</Typography>
-        </Grid>
-        <Grid item xs={8}>
-          <Search searchTerm={searchTerm} updateSearchTerm={updateSearchTerm} />
-        </Grid>
-        <Grid container item xs={12} spacing={3}>
+    <Container style={{ height: '100%' }} maxWidth="lg">
+      <Typography align="center" variant="h1">The Shoppies</Typography>
+      <Box mt={2} mb={3}>
+        <Search searchTerm={searchTerm} updateSearchTerm={updateSearchTerm} />
+      </Box>
+      <Box style={{ height: '100%' }}>
+        <Grid style={{ height: '100%' }} container spacing={3}>
           <Grid item xs={12} md={6}>
             <SearchResults
               idDictionary={idDictionary}
@@ -75,7 +75,7 @@ const App = () => {
             <Nominations nominations={nominations} removeMovie={removeMovie} />
           </Grid>
         </Grid>
-      </Grid>
+      </Box>
       <NominationAlert open={open} setOpen={setOpen} />
     </Container>
   );

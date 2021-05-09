@@ -8,7 +8,7 @@ const Search = ({ searchTerm, updateSearchTerm }) => {
     updateSearchTerm(e.target.value);
   };
   return (
-    <TextField fullWidth label="Search Field" type="search" value={searchTerm} onChange={handleChange} />
+    <TextField data-testid="search-input" fullWidth label="Search Field" type="search" value={searchTerm} onChange={handleChange} />
   );
 };
 

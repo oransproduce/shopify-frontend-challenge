@@ -1,9 +1,11 @@
+/**
+ * @jest-environment node
+ */
 /* eslint-disable no-undef */
 const request = require('supertest');
 const mongoose = require('mongoose');
-const { Movies } = require('../database');
 
-const app = require('../server/app.js');
+const app = require('../app.js');
 
 beforeEach((done) => {
   mongoose.connect('mongodb://localhost:27017/JestDB',
@@ -19,8 +21,8 @@ afterEach((done) => {
 
 describe('POST /movies', () => {
   const movie = {
-    title: 'Lord of the Rings',
-    year: '2001',
+    Title: 'Lord of the Rings',
+    Year: '2001',
     imdbID: 'abcdefg',
   };
   it('responds with correct status code and json', (done) => {
@@ -38,8 +40,8 @@ describe('POST /movies', () => {
 describe('GET /movies', () => {
   it('responds with a movie that has been posted with status code 200', async (done) => {
     const movie = {
-      title: 'Lord of the Rings',
-      year: '2001',
+      Title: 'Lord of the Rings',
+      Year: '2001',
       imdbID: 'abcdefg',
     };
     await request(app)
@@ -62,8 +64,8 @@ describe('GET /movies', () => {
 describe('DELETE /movies', () => {
   it('deletes posted movie and subsequent get returns nothing', async (done) => {
     const movie = {
-      title: 'Lord of the Rings',
-      year: '2001',
+      Title: 'Lord of the Rings',
+      Year: '2001',
       imdbID: 'abcdefg',
     };
     await request(app)

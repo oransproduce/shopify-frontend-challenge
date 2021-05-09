@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Paper, Typography } from '@material-ui/core';
+import { Paper, Typography, Box } from '@material-ui/core';
 import { uniqBy } from 'lodash';
 import MovieList from './MovieList';
 
@@ -10,9 +10,11 @@ const SearchResults = (props) => {
   } = props;
   const filteredResults = uniqBy(resultList, 'imdbID');
   return (
-    <Paper>
-      <Typography align="center" variant="h3">Search Results</Typography>
-      <MovieList doneNominating={doneNominating} idDictionary={idDictionary} title="Search Results" movieList={filteredResults} movieAction={nominateMovie} buttonText="Nominate" />
+    <Paper style={{ height: '100%' }}>
+      <Box p={2}>
+        <Typography align="center" variant="h3">Search Results</Typography>
+        <MovieList doneNominating={doneNominating} idDictionary={idDictionary} title="Search Results" movieList={filteredResults} movieAction={nominateMovie} buttonText="Nominate" />
+      </Box>
     </Paper>
   );
 };
