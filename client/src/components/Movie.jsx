@@ -13,7 +13,7 @@ const Movie = (props) => {
   return (
     <ListItem>
       <ListItemText primary={title} secondary={year} />
-      <Button data-testid="movie-button" disabled={disabled} variant="contained" onClick={handleClick}>{buttonText}</Button>
+      <Button style={{ minWidth: '88.7px' }} size="small" data-testid="movie-button" disabled={disabled} variant="contained" onClick={handleClick}>{buttonText}</Button>
     </ListItem>
   );
 };

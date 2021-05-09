@@ -1,12 +1,14 @@
-import { Paper, Typography } from '@material-ui/core';
+import { Paper, Typography, Box } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 import MovieList from './MovieList';
 
 const Nominations = ({ nominations, removeMovie }) => (
-  <Paper>
-    <Typography align="center" variant="h3">Nominations</Typography>
-    <MovieList movieList={nominations} movieAction={removeMovie} buttonText="Remove" />
+  <Paper style={{ height: '100%' }}>
+    <Box p={2}>
+      <Typography align="center" variant="h3">Nominations</Typography>
+      <MovieList movieList={nominations} movieAction={removeMovie} buttonText="Remove" />
+    </Box>
   </Paper>
 );
 
