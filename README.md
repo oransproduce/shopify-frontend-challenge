@@ -38,10 +38,10 @@
 
 ## Usage
 
-> Use webpack to create bundled javascript code for client side rendering by running in terminal: 
-  npm run react-dev
-> Start local server by running in terminal: 
-  npm start
+* Use webpack to create bundled javascript code for client side rendering by running in terminal: 
+  * npm run react-dev
+* Start local server by running in terminal: 
+  * npm start
 
 ## Requirements
 
