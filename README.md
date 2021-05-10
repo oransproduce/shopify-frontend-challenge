@@ -14,7 +14,7 @@
 ## Motivation
 > I created this for Shopify's Frontend Internship Challenge 2021. Given the time constraint, I focused on quality rather than quantity of features. My goals for the project were to create a simple, responsive design that featured clear separation of concerns and an intuitive data flow. In addition to the basic requirements, I implemented a RESTful API server using the Express framework, and persisted the nominations using MongoDB.
 ## Demo
-![The Shoppies](http://54.187.110.54/)
+![The Shoppies](http://54.187.110.55/)
 
 ## Tech
 * Front End
